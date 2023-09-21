@@ -1,0 +1,148 @@
+# Finance Tracker: SQL, pytest, and pylint
+
+This is a simple terminal finance tracker that allows user to store their transaction and analyze them, similar to a budgeting app.
+
+## Running pylint
+### tracker.py
+```
+tracker.py:46:10: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+tracker.py:50:14: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+tracker.py:52:0: R0912: Too many branches (15/12) (too-many-branches)
+
+------------------------------------------------------------------
+Your code has been rated at 9.48/10 (previous run: 8.28/10, +1.20)
+```
+### transactions.py
+These are all neccessary for readability
+```
+transactions.py:27:0: C0301: Line too long (112/100) (line-too-long)
+transactions.py:43:26: C0303: Trailing whitespace (trailing-whitespace)
+transactions.py:45:31: C0303: Trailing whitespace (trailing-whitespace)
+transactions.py:46:20: C0303: Trailing whitespace (trailing-whitespace)
+transactions.py:47:19: C0303: Trailing whitespace (trailing-whitespace)
+transactions.py:49:0: C0303: Trailing whitespace (trailing-whitespace)
+transactions.py:56:0: C0301: Line too long (140/100) (line-too-long)
+transactions.py:65:0: C0303: Trailing whitespace (trailing-whitespace)
+transactions.py:73:0: C0301: Line too long (115/100) (line-too-long)
+transactions.py:74:0: C0303: Trailing whitespace (trailing-whitespace)
+transactions.py:78:0: C0301: Line too long (115/100) (line-too-long)
+transactions.py:79:0: C0303: Trailing whitespace (trailing-whitespace)
+transactions.py:80:0: C0303: Trailing whitespace (trailing-whitespace)
+transactions.py:81:0: C0305: Trailing newlines (trailing-newlines)
+transactions.py:38:29: W0622: Redefining built-in 'tuple' (redefined-builtin)
+
+------------------------------------------------------------------
+Your code has been rated at 5.31/10 (previous run: 5.31/10, +0.00)
+```
+## Running pytest
+```
+======================================= test session starts =======================================
+platform darwin -- Python 3.9.6, pytest-7.2.1, pluggy-1.0.0
+rootdir: [User PATH]
+plugins: anyio-3.6.2
+collected 7 items                                                                                                                                               
+
+test_transaction.py .......                                                                [100%]
+======================================= 7 passed in 0.03s ======================================= 
+```
+## Project Demonstration
+```
+usage:
+            0. quit
+            1. show
+            2. add [amount] [category] [yyyy-mm-dd] [description]
+            3. delete [transaction ID]
+            4. sum_d [dd]
+            5. sum_m [mm]
+            6. sum_y [yyyy]
+            7. sum_cat [catagories]
+            8. print_usage
+            
+command> add 10 test 2023-01-01 test
+--------------------------------------------------------------------------------
+
+
+
+command> add 10 test 2023-02-02 test2   
+--------------------------------------------------------------------------------
+
+
+
+command> sum_d
+
+
+item #     amount     category   date            description                   
+--------------------------------------------------------------------------------
+1          10         test       2023-01-01      test                          
+2          10         test       2023-02-02      test2                         
+--------------------------------------------------------------------------------
+
+
+
+command> sum_m 01
+
+
+item #     amount     category   date            description                   
+--------------------------------------------------------------------------------
+1          10         test       2023-01-01      test                          
+--------------------------------------------------------------------------------
+
+
+
+command> sum_y 2023
+
+
+item #     amount     category   date            description                   
+--------------------------------------------------------------------------------
+1          10         test       2023-01-01      test                          
+2          10         test       2023-02-02      test2                         
+--------------------------------------------------------------------------------
+
+
+
+command> add 10 test 2022-01-01 test3   
+--------------------------------------------------------------------------------
+
+
+
+command> show
+
+
+item #     amount     category   date            description                   
+--------------------------------------------------------------------------------
+1          10         test       2023-01-01      test                          
+2          10         test       2023-02-02      test2                         
+3          10         test       2022-01-01      test3                         
+--------------------------------------------------------------------------------
+
+
+
+command> sum_y 2023
+
+
+item #     amount     category   date            description                   
+--------------------------------------------------------------------------------
+1          10         test       2023-01-01      test                          
+2          10         test       2023-02-02      test2                         
+--------------------------------------------------------------------------------
+
+
+
+command> delete 1
+--------------------------------------------------------------------------------
+
+
+
+command> show
+
+
+item #     amount     category   date            description                   
+--------------------------------------------------------------------------------
+2          10         test       2023-02-02      test2                         
+3          10         test       2022-01-01      test3                         
+--------------------------------------------------------------------------------
+
+
+
+command> quit
+```
